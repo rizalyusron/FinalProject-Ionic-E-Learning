@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Courses Available
+    </ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+
+  <!-- Displays a list if 'data' is available -->
+  <ion-list *ngIf="Kursus">
+    <!-- Iterates over each item in 'data' and creates an ion-item for each -->
+
+      <ion-card *ngFor="let item of Kursus">
+        <ion-card-header>
+          <ion-card-title>{{ item.title}}</ion-card-title>
+          <ion-card-subtitle>{{ item.title}}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          {{item.description}}
+          <br/>
+          <ion-button  (click)="openCourseDetail(item.id)" size="small" class = "button button-assertive button-outline">
+            Open
+         </ion-button>
+        </ion-card-content>
+
+      </ion-card>
+
+
+  </ion-list>
+
+  <!-- Displays a loading spinner if 'data' is not yet available -->
+  <ion-spinner *ngIf="!Kursus"></ion-spinner>
+
+</ion-content>
